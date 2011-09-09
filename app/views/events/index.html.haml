@@ -1,0 +1,26 @@
+%h1 Listing events
+
+%table
+  %tr
+    %th Name
+    %th Turnout
+    %th Place
+    %th Date
+
+  - @events.each do |event|
+    %tr
+      %td= link_to event.name, event
+      %td.turnout= event.turnout
+      %td= event.place
+      %td= event.date.to_s(:basic)
+
+%br
+
+%div
+  Total turnout :
+  = @events.map(&:turnout).sum
+
+%br
+
+%div
+  = link_to 'New Event', new_event_path

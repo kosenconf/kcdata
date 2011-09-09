@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Serial:
+  = @event.serial
+%p
+  %b Name:
+  = @event.name
+%p
+  %b Turnout:
+  = @event.turnout
+%p
+  %b Place:
+  = @event.place
+%p
+  %b Address:
+  = @event.address
+%p
+  %b Date:
+  = @event.date.to_s(:basic)
+
+= link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Back', events_path

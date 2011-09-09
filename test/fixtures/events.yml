@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  serial: MyString
+  name: MyString
+  turnout: 1
+  address: MyString
+  date: 2011-09-09 16:45:26
+
+two:
+  serial: MyString
+  name: MyString
+  turnout: 1
+  address: MyString
+  date: 2011-09-09 16:45:26

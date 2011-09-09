@@ -1,0 +1,19 @@
+table {
+  tr {
+    th, td {
+      padding: 3px 10px;
+    }
+
+    th {
+      background-color: #ccc;
+    }
+
+    td {
+      background-color: #eee;
+    }
+
+    td.turnout {
+      text-align: right;
+    }
+  }
+}
