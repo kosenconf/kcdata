@@ -2,7 +2,13 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.order("date")
+    @events_for_graph = @events.map { |event|
+      {
+        :serial  => event.serial,
+        :turnout => event.turnout
+      }
+    }
 
     respond_to do |format|
       format.html # index.html.erb

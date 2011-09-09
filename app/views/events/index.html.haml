@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th
     %th Name
     %th Turnout
     %th Place
@@ -9,6 +10,7 @@
 
   - @events.each do |event|
     %tr
+      %td= event.serial
       %td= link_to event.name, event
       %td.turnout= event.turnout
       %td= event.place
@@ -19,6 +21,29 @@
 %div
   Total turnout :
   = @events.map(&:turnout).sum
+
+  #chart
+
+%script{ :type => "text/javascript", :src => "https://www.google.com/jsapi"}
+:javascript
+  var events = #{@events_for_graph.to_json};
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(draw);
+  function draw() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Serial');
+    data.addColumn('number', 'Turnout');
+    data.addRows(events.length);
+
+    for (var i = 0; i < events.length; i++) {
+      var event = events[i];
+      data.setValue(i, 0, event.serial);
+      data.setValue(i, 1, event.turnout);
+    }
+
+    var chart = new google.visualization.BarChart(document.getElementById("chart"));
+    chart.draw(data, {width: 600, height: 300, title: "Turnout"});
+  }
 
 %br
 
