@@ -1,23 +1,19 @@
 %p#notice= notice
 
+%h2= @event.name
+
+%p= "kosenconf-" + @event.serial
+
+%p= "開催日 : #{@event.date}"
+
+%p= "会場 : #{@event.place} (#{@event.address})"
+
+%p= "参加者数 : #{@event.turnout}人"
+
 %p
-  %b Serial:
-  = @event.serial
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Turnout:
-  = @event.turnout
-%p
-  %b Place:
-  = @event.place
-%p
-  %b Address:
-  = @event.address
-%p
-  %b Date:
-  = @event.date.to_s(:basic)
+  はてなブックマーク タグ
+  = link_to "kosenconf-#{@event.serial}", "http://b.hatena.ne.jp/t/kosenconf-#{@event.serial}?sort=eid"
+  を含む新着エントリー
 
 = link_to 'Edit', edit_event_path(@event)
 \|
