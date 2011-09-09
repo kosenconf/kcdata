@@ -42,7 +42,7 @@
     }
 
     var chart = new google.visualization.BarChart(document.getElementById("chart"));
-    chart.draw(data, {width: 600, height: 300, title: "Turnout"});
+    chart.draw(data, {width: 800, height: #{@events_for_graph.size * 50}, title: "Turnout"});
   }
 
 %br
