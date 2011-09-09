@@ -1,12 +1,15 @@
-%h1 Listing events
+%h1 高専カンファレンス 開催リスト
+
+%div
+  = "全 #{@events.size} 開催、総参加者数 #{@events.map(&:turnout).sum} 人"
 
 %table
   %tr
     %th
-    %th Name
-    %th Turnout
-    %th Place
-    %th Date
+    %th 開催名
+    %th 参加者数
+    %th 会場
+    %th 開催日
 
   - @events.each do |event|
     %tr
@@ -19,10 +22,9 @@
 %br
 
 %div
-  Total turnout :
-  = @events.map(&:turnout).sum
+  = link_to 'Add New Event', new_event_path
 
-  #chart
+#chart
 
 %script{ :type => "text/javascript", :src => "https://www.google.com/jsapi"}
 :javascript
@@ -32,7 +34,7 @@
   function draw() {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Serial');
-    data.addColumn('number', 'Turnout');
+    data.addColumn('number', '参加者数');
     data.addRows(events.length);
 
     for (var i = 0; i < events.length; i++) {
@@ -42,10 +44,5 @@
     }
 
     var chart = new google.visualization.BarChart(document.getElementById("chart"));
-    chart.draw(data, {width: 800, height: #{@events_for_graph.size * 50}, title: "Turnout"});
+    chart.draw(data, {width: 800, height: #{@events_for_graph.size * 35}, title: ""});
   }
-
-%br
-
-%div
-  = link_to 'New Event', new_event_path
