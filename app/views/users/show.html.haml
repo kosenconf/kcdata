@@ -15,19 +15,19 @@
       - unless staffs.empty?
         %h3
           運営した開催
-        = render :partial => "events/basic", :as => :event, :collection => staffs.map(&:event)
+        = render :partial => "events/basic", :as => :event, :collection => staffs.map(&:event).sort_by(&:date)
       - unless speakers.empty?
         %h3
           発表した開催
-        = render :partial => "events/basic", :as => :event, :collection => speakers.map(&:event)
+        = render :partial => "events/basic", :as => :event, :collection => speakers.map(&:event).sort_by(&:date)
       - unless attendees.empty?
         %h3
           参加した開催
-        = render :partial => "events/basic", :as => :event, :collection => attendees.map(&:event)
+        = render :partial => "events/basic", :as => :event, :collection => attendees.map(&:event).sort_by(&:date)
       - unless onlines.empty?
         %h3
           オンライン参加した開催
-        = render :partial => "events/basic", :as => :event, :collection => onlines.map(&:event)
+        = render :partial => "events/basic", :as => :event, :collection => onlines.map(&:event).sort_by(&:date)
 
   .span5
     %h3= "運営 #{staffs.count} 回"
