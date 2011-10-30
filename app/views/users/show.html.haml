@@ -14,21 +14,23 @@
 
       - unless staffs.empty?
         %h3
-          運営した開催 :
-          = staffs.count
+          運営した開催
         = render :partial => "events/basic", :as => :event, :collection => staffs.map(&:event)
       - unless speakers.empty?
         %h3
-          発表した開催 :
-          = speakers.count
+          発表した開催
         = render :partial => "events/basic", :as => :event, :collection => speakers.map(&:event)
       - unless attendees.empty?
         %h3
-          参加した開催 :
-          = attendees.count
+          参加した開催
         = render :partial => "events/basic", :as => :event, :collection => attendees.map(&:event)
       - unless onlines.empty?
         %h3
-          オンライン参加した開催 :
-          = onlines.count
+          オンライン参加した開催
         = render :partial => "events/basic", :as => :event, :collection => onlines.map(&:event)
+
+  .span5
+    %h3= "運営 #{staffs.count} 回"
+    %h3= "発表 #{speakers.count} 回"
+    %h3= "参加 #{attendees.count} 回"
+    %h3= "視聴 #{onlines.count} 回"
