@@ -35,7 +35,15 @@
       :plain
         <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="kosenconf">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
       する
-    %h3= "運営 #{staffs.count} 回"
-    %h3= "発表 #{speakers.count} 回"
-    %h3= "参加 #{attendees.count} 回"
-    %h3= "視聴 #{onlines.count} 回"
+    .counter
+      .caption 運営
+      .count= staffs.count
+    .counter
+      .caption 発表
+      .count= speakers.count
+    .counter
+      .caption 参加
+      .count= attendees.count
+    .counter
+      .caption 視聴
+      .count= onlines.count
