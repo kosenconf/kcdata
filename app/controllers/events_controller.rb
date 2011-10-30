@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_serial(params[:id])
+    @title = @event.name
 
     if signed_in?
       @relation = Relation.find_by_event_id_and_user_id(@event, current_user)

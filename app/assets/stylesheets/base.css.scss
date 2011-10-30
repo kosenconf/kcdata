@@ -128,3 +128,16 @@
     }
   }
 }
+
+.tweet {
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 20px;
+  @include border-radius(20px);
+
+  * {
+    vertical-align: bottom;
+  }
+}
