@@ -14,14 +14,18 @@
 ActiveRecord::Schema.define(:version => 20110909074526) do
 
   create_table "events", :force => true do |t|
-    t.string   "serial"
-    t.string   "name"
-    t.integer  "turnout"
+    t.string   "serial",                     :null => false
+    t.string   "name",                       :null => false
+    t.string   "description"
+    t.string   "url"
+    t.integer  "turnout",     :default => 0
     t.string   "place"
     t.string   "address"
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["serial"], :name => "index_events_on_serial", :unique => true
 
 end

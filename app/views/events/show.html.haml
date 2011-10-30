@@ -4,6 +4,10 @@
 
 %p= "kosenconf-" + @event.serial
 
+%p= "開催概要 : #{@event.description}"
+
+%p= "公式ページ : #{@event.url}"
+
 %p= "開催日 : #{@event.date}"
 
 %p= "会場 : #{@event.place} (#{@event.address})"
