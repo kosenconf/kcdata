@@ -14,6 +14,8 @@
 
     #main
       .container
+        - if notice
+          #notice.alert-message.info= notice
         = yield
 
     %footer.footer

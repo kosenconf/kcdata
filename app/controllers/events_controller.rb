@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class EventsController < ApplicationController
   # GET /events
   # GET /events.json
@@ -50,7 +51,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: "開催情報が追加されました！ありがとうございます！" }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
@@ -66,7 +67,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: "開催情報が更新されました！" }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

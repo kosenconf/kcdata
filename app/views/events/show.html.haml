@@ -1,24 +1,32 @@
-%p#notice= notice
+.row
+  .span12
+    .event
+      %h2= @event.name
+      .basic-info
+        = "kosenconf-" + @event.serial
+        - if @event.url.present?
+          = link_to "公式ページ", @event.url, :target => "_blank"
 
-%h2= @event.name
+      - if @event.description.present?
+        .description
+          = "開催概要 : #{@event.description}"
 
-%p= "kosenconf-" + @event.serial
+      .date
+        = "開催日 : #{@event.date}"
 
-%p= "開催概要 : #{@event.description}"
+      .place
+        = "会場 : #{@event.place} (#{@event.address})"
 
-%p= "公式ページ : #{@event.url}"
+      - if @event.turnout > 0
+        .turnout
+          = "参加者数 : 約#{@event.turnout}人"
 
-%p= "開催日 : #{@event.date}"
+      .link-box
+        = link_to "この開催の情報を編集する", edit_event_path(@event)
 
-%p= "会場 : #{@event.place} (#{@event.address})"
-
-%p= "参加者数 : #{@event.turnout}人"
-
-%p
-  はてなブックマーク タグ
-  = link_to "kosenconf-#{@event.serial}", "http://b.hatena.ne.jp/t/kosenconf-#{@event.serial}?sort=eid"
-  を含む新着エントリー
-
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+    %h3 関連情報
+    %ul
+      %li
+        はてなブックマーク タグ
+        = link_to "kosenconf-#{@event.serial}", "http://b.hatena.ne.jp/t/kosenconf-#{@event.serial}?sort=eid", :target => "_blank"
+        を含む新着エントリー

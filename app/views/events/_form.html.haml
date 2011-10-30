@@ -1,34 +1,35 @@
 = form_for @event do |f|
-  -if @event.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+  - if @event.errors.any?
+    .alert-message.block-message.error
+      %h3
+        = "入力された開催情報の#{@event.errors.count}ヶ所に不適切なものがありました。"
       %ul
         - @event.errors.full_messages.each do |msg|
           %li= msg
 
   .field
-    = f.label :serial
+    = f.label "連番"
     = f.text_field :serial
   .field
-    = f.label :name
+    = f.label "開催名"
     = f.text_field :name
   .field
-    = f.label :description
-    = f.text_field :description
+    = f.label "開催概要"
+    = f.text_area :description, :rows => 5
   .field
-    = f.label :url
+    = f.label "公式サイトのURL"
     = f.text_field :url
   .field
-    = f.label :turnout
+    = f.label "参加者数"
     = f.number_field :turnout
   .field
-    = f.label :place
+    = f.label "会場名"
     = f.text_field :place
   .field
-    = f.label :address
+    = f.label "会場住所"
     = f.text_field :address
   .field
-    = f.label :date
+    = f.label "開催日"
     = f.date_select :date
   .actions
-    = f.submit 'Save'
+    = f.submit "保存する", :class => "btn primary"
