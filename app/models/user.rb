@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :relations
+
   validates :name,              :presence => true, :uniqueness => true
   validates :provider,          :presence => true
   validates :uid,               :presence => true

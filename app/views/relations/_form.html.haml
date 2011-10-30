@@ -1,0 +1,22 @@
+.relation
+  .event
+    = relation.event.name
+
+  = form_for relation do |f|
+    = f.hidden_field :event_id
+
+    %ul
+      %li
+        に参加した
+        = f.check_box :attendee
+      %li
+        を運営した
+        = f.check_box :staff
+      %li
+        で発表した
+        = f.check_box :speaker
+      %li
+        を視聴した
+        = f.check_box :online
+
+    = f.submit "参加情報を登録する", :class => "btn primary"

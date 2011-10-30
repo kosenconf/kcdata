@@ -2,4 +2,33 @@
   .span11
     %h2.user-title
       = image_tag(@user.profile_image_url, :size => "48x48")
+      高専カンファレンスと
       = @user.name
+
+    #events
+      - relations = @user.relations
+      - attendees = relations.attendee
+      - staffs    = relations.staff
+      - speakers  = relations.speaker
+      - onlines   = relations.online
+
+      - unless staffs.empty?
+        %h3
+          運営した開催 :
+          = staffs.count
+        = render :partial => "events/basic", :as => :event, :collection => staffs.map(&:event)
+      - unless speakers.empty?
+        %h3
+          発表した開催 :
+          = speakers.count
+        = render :partial => "events/basic", :as => :event, :collection => speakers.map(&:event)
+      - unless attendees.empty?
+        %h3
+          参加した開催 :
+          = attendees.count
+        = render :partial => "events/basic", :as => :event, :collection => attendees.map(&:event)
+      - unless onlines.empty?
+        %h3
+          オンライン参加した開催 :
+          = onlines.count
+        = render :partial => "events/basic", :as => :event, :collection => onlines.map(&:event)

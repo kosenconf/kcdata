@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  attendee: false
+  staff: false
+  speaker: false
+  online: false
+  user_id: 1
+  event_id: 1
+
+two:
+  attendee: false
+  staff: false
+  speaker: false
+  online: false
+  user_id: 1
+  event_id: 1

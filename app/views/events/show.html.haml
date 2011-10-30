@@ -1,5 +1,5 @@
 .row
-  .span12
+  .span11
     .event
       %h2= @event.name
       .basic-info
@@ -30,3 +30,26 @@
         はてなブックマーク タグ
         = link_to "kosenconf-#{@event.serial}", "http://b.hatena.ne.jp/t/kosenconf-#{@event.serial}?sort=eid", :target => "_blank"
         を含む新着エントリー
+
+    - relations = @event.relations
+    - attendees = relations.attendee
+    - staffs    = relations.staff
+    - speakers  = relations.speaker
+    - onlines   = relations.online
+
+    - unless staffs.empty?
+      %h3 スタッフ
+      = render :partial => "users/cube", :as => :user, :collection => staffs.map(&:user)
+    - unless speakers.empty?
+      %h3 発表者
+      = render :partial => "users/cube", :as => :user, :collection => speakers.map(&:user)
+    - unless attendees.empty?
+      %h3 参加者
+      = render :partial => "users/cube", :as => :user, :collection => attendees.map(&:user)
+    - unless onlines.empty?
+      %h3 オンライン参加者
+      = render :partial => "users/cube", :as => :user, :collection => onlines.map(&:user)
+
+  .span5
+    - if signed_in?
+      = render :partial => "relations/form", :as => :relation, :object => @relation

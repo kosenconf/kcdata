@@ -102,7 +102,25 @@
 }
 
 .user-title {
+  margin-bottom: 20px;
+
   img {
     vertical-align: middle;
+  }
+}
+
+.relation {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #999;
+
+  form {
+    margin: 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 5px 20px;
+    }
   }
 }

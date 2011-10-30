@@ -1,4 +1,6 @@
 Kcdata::Application.routes.draw do
+  resources :relations
+
   get "users/show"
 
   resources :events

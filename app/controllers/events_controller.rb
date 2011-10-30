@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
-  # GET /events
-  # GET /events.json
   def index
     @events = Event.order("date")
     @events_for_graph = @events.map { |event|
@@ -12,40 +10,38 @@ class EventsController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @events }
     end
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
     @event = Event.find_by_serial(params[:id])
 
+    if signed_in?
+      @relation = Relation.find_by_event_id_and_user_id(@event, current_user)
+      @relation ||= Relation.new(:event => @event, :user => current_user)
+    end
+
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @event }
     end
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
     @event = Event.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @event }
     end
   end
 
-  # GET /events/1/edit
   def edit
     @event = Event.find_by_serial(params[:id])
   end
 
-  # POST /events
-  # POST /events.json
   def create
     @event = Event.new(params[:event])
 
@@ -60,8 +56,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PUT /events/1
-  # PUT /events/1.json
   def update
     @event = Event.find_by_serial(params[:id])
 
@@ -76,8 +70,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event = Event.find_by_serial(params[:id])
     @event.destroy

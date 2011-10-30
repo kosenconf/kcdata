@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030122928) do
+ActiveRecord::Schema.define(:version => 20111030131527) do
 
   create_table "events", :force => true do |t|
     t.string   "serial",                     :null => false
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(:version => 20111030122928) do
   end
 
   add_index "events", ["serial"], :name => "index_events_on_serial", :unique => true
+
+  create_table "relations", :force => true do |t|
+    t.boolean  "attendee",   :default => false
+    t.boolean  "staff",      :default => false
+    t.boolean  "speaker",    :default => false
+    t.boolean  "online",     :default => false
+    t.integer  "user_id",                       :null => false
+    t.integer  "event_id",                      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relations", ["event_id"], :name => "index_relations_on_event_id"
+  add_index "relations", ["user_id", "event_id"], :name => "index_relations_on_user_id_and_event_id", :unique => true
+  add_index "relations", ["user_id"], :name => "index_relations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name",              :null => false
