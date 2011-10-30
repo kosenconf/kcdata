@@ -6,4 +6,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = yield
+    .topbar
+      .topbar-inner
+        .container
+          %h1
+            = link_to "KCdata", root_path, :class => "brand"
+
+    #main
+      .container
+        = yield
+
+    %footer.footer
+      .container
+        %p
+          Source code is on
+          = link_to "GitHub", "https://github.com/kosenconf/kcdata"
+        %p
+          With a lot of respects for
+          = link_to "Kosen Conference", "http://kosenconf.jp"
+          developed by
+          = link_to "@june29", "http://twitter.com/june29"

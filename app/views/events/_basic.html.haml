@@ -1,0 +1,13 @@
+.event
+  .serial
+    = event.serial
+  %h3
+    = link_to event.name, event
+  .date
+    開催 :
+    = event.date.to_s(:basic)
+  .place
+    = "#{event.place} (#{event.address})"
+  - if event.turnout > 0
+    .turnout
+      = "参加者数 約#{event.turnout}人"
