@@ -30,6 +30,6 @@
     = f.text_field :address
   .field
     = f.label "開催日"
-    = f.date_select :date
+    = f.date_select :date, { :use_month_numbers => true }
   .actions
     = f.submit "保存する", :class => "btn primary"
