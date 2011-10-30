@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110909074526) do
+ActiveRecord::Schema.define(:version => 20111030122928) do
 
   create_table "events", :force => true do |t|
     t.string   "serial",                     :null => false
@@ -27,5 +27,19 @@ ActiveRecord::Schema.define(:version => 20110909074526) do
   end
 
   add_index "events", ["serial"], :name => "index_events_on_serial", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "name",              :null => false
+    t.string   "provider",          :null => false
+    t.string   "uid",               :null => false
+    t.string   "profile_image_url", :null => false
+    t.string   "access_token",      :null => false
+    t.string   "access_secret",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
+  add_index "users", ["provider", "uid"], :name => "index_users_on_provider_and_uid", :unique => true
 
 end

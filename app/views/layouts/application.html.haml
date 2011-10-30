@@ -9,8 +9,18 @@
     .topbar
       .topbar-inner
         .container
-          %h1
-            = link_to "KCdata", root_path, :class => "brand"
+          = link_to "KCdata", root_path, :class => "brand"
+          %ul.nav.secondary-nav
+            - if signed_in?
+              %li
+                = link_to image_tag(current_user.profile_image_url, :size => "24x24"), current_user, :style => "padding: 8px 0 0;"
+              %li
+                = link_to current_user.name, current_user
+              %li
+                = link_to "Sign out", sign_out_path, :method => :delete
+            - else
+              %li
+                = link_to "Sign in with Twitter", "/auth/twitter"
 
     #main
       .container

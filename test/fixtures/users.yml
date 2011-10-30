@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  provider: MyString
+  uid: MyString
+  access_token: MyString
+  access_secret: MyString
+  profile_image_url: MyString
+
+two:
+  name: MyString
+  provider: MyString
+  uid: MyString
+  access_token: MyString
+  access_secret: MyString
+  profile_image_url: MyString

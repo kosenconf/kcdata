@@ -1,7 +1,5 @@
-.outline
-
 .row
-  .span12
+  .span11
     #events
       %h2 高専カンファレンスの開催一覧
 
@@ -13,7 +11,7 @@
 
       = render :partial => "events/basic", :as => :event, :collection => @events
 
-  .span4
+  .span5
     #about
       %h2 このサイトは？
 
@@ -21,3 +19,6 @@
         = link_to "KCdata", root_path
         は、高専カンファレンスに関するデータを集約するアプリケーションです。
 
+    #users
+      %h2 ユーザ
+      = render :partial => "users/cube", :as => :user, :collection => @users

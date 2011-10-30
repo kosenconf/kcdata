@@ -8,11 +8,9 @@
   padding-top: 50px;
 
   .outline {
+    margin-bottom: 20px;
     padding: 10px 0;
   }
-}
-
-footer {
 }
 
 .footer {
@@ -93,4 +91,18 @@ footer {
   background-color: #fae5e3;
   margin: 10px;
   @include border-radius(5px);
+}
+
+.cube {
+  img {
+    margin: 2px;
+    padding: 4px;
+    border: 1px solid #999;
+  }
+}
+
+.user-title {
+  img {
+    vertical-align: middle;
+  }
 }
