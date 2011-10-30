@@ -12,7 +12,7 @@
           = "開催概要 : #{@event.description}"
 
       .date
-        = "開催日 : #{@event.date}"
+        = "開催日 : #{@event.date.to_s(:basic)}"
 
       .place
         = "会場 : #{@event.place} (#{@event.address})"
