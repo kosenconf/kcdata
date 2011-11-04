@@ -30,6 +30,16 @@
   }
 }
 
+@each $class in staff, speaker, attendee, watcher {
+  h3.#{$class} {
+    padding-left: 56px;
+    line-height: 50px;
+    background-image: #{image_url("icons/#{$class}.png")};
+    background-position: 0 0;
+    background-repeat: no-repeat;
+  }
+}
+
 #events {
   .summary {
     font-size: 120%;
@@ -37,7 +47,7 @@
   }
 
   .event {
-    margin: 5px 0 20px;
+    margin: 5px 10px 20px;
     padding: 10px;
     border: 1px solid #999;
     position: relative;
@@ -144,18 +154,25 @@
 
 .counter {
   float: left;
-  width: 100px;
+  width: 98px;
+  min-height: 40px;
   margin: 5px;
   padding: 15px;
-  background-color: #eee;
-  text-align: center;
+  border: 1px solid #999;
+  position: relative;
   @include border-radius(10px);
 
+  .icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
   .count {
-    color: #fff;
+    font-size: 48px;
     font-weight: bold;
-    font-size: 300%;
-    text-shadow: 0 0 2px #000;
-    line-height: 40px;
+    position: absolute;
+    top: 24px;
+    right: 10px;
   }
 }

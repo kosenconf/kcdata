@@ -5,5 +5,5 @@ class Relation < ActiveRecord::Base
   scope :attendee, where(:attendee => true)
   scope :staff,    where(:staff    => true)
   scope :speaker,  where(:speaker  => true)
-  scope :online,   where(:online   => true)
+  scope :watcher,  where(:online   => true)
 end

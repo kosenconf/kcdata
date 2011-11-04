@@ -35,7 +35,7 @@
     - attendees = relations.attendee
     - staffs    = relations.staff
     - speakers  = relations.speaker
-    - onlines   = relations.online
+    - watchers  = relations.watcher
 
     - unless staffs.empty?
       %h3 スタッフ
@@ -46,9 +46,9 @@
     - unless attendees.empty?
       %h3 参加者
       = render :partial => "users/cube", :as => :user, :collection => attendees.map(&:user)
-    - unless onlines.empty?
+    - unless watchers.empty?
       %h3 オンライン参加者
-      = render :partial => "users/cube", :as => :user, :collection => onlines.map(&:user)
+      = render :partial => "users/cube", :as => :user, :collection => watchers.map(&:user)
 
   .span5
     - if signed_in?

@@ -10,24 +10,24 @@
       - attendees = relations.attendee
       - staffs    = relations.staff
       - speakers  = relations.speaker
-      - onlines   = relations.online
+      - watchers  = relations.watcher
 
       - unless staffs.empty?
-        %h3
+        %h3.staff
           運営した開催
         = render :partial => "events/basic", :as => :event, :collection => staffs.map(&:event).sort_by(&:date)
       - unless speakers.empty?
-        %h3
+        %h3.speaker
           発表した開催
         = render :partial => "events/basic", :as => :event, :collection => speakers.map(&:event).sort_by(&:date)
       - unless attendees.empty?
-        %h3
+        %h3.attendee
           参加した開催
         = render :partial => "events/basic", :as => :event, :collection => attendees.map(&:event).sort_by(&:date)
-      - unless onlines.empty?
-        %h3
+      - unless watchers.empty?
+        %h3.watcher
           オンライン参加した開催
-        = render :partial => "events/basic", :as => :event, :collection => onlines.map(&:event).sort_by(&:date)
+        = render :partial => "events/basic", :as => :event, :collection => watchers.map(&:event).sort_by(&:date)
 
   .span5
     .tweet
@@ -35,15 +35,24 @@
       :plain
         <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="kosenconf">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
       する
+
     .counter
-      .caption 運営
-      .count= staffs.count
+      .icon
+        = image_tag("icons/staff.png", :size => "48x48")
+      .count
+        = staffs.count
     .counter
-      .caption 発表
-      .count= speakers.count
+      .icon
+        = image_tag("icons/speaker.png", :size => "48x48")
+      .count
+        = speakers.count
     .counter
-      .caption 参加
-      .count= attendees.count
+      .icon
+        = image_tag("icons/attendee.png", :size => "48x48")
+      .count
+        = attendees.count
     .counter
-      .caption 視聴
-      .count= onlines.count
+      .icon
+        = image_tag("icons/watcher.png", :size => "48x48")
+      .count
+        = watchers.count
