@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     if user = User.find_by_provider_and_uid(provider, uid)
       self.current_user = user
-      redirect_to :back
+      redirect_to request.env["HTTP_REFERER"].blank? ? root_path : :back
       return
     end
 
