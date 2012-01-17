@@ -17,7 +17,7 @@
       .place
         = "会場 : #{@event.place} (#{@event.address})"
 
-      - if @event.turnout > 0
+      - if @event.turnout && @event.turnout > 0
         .turnout
           = "参加者数 : 約#{@event.turnout}人"
 
