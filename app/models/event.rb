@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :relations
+  has_many :users, :through => :relations
 
   validates :serial,  :presence => true, :uniqueness => true
   validates :name,    :presence => true

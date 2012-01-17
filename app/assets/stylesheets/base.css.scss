@@ -53,7 +53,7 @@
     position: relative;
     @include border-radius(5px);
 
-  .serial {
+    .serial {
       color: #fff;
       background-color: #333;
       font-weight: bold;
@@ -75,6 +75,10 @@
 
     .date {
       text-align: right;
+    }
+
+    .people {
+      padding-top: 5px;
     }
   }
 }

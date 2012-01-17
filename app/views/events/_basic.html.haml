@@ -11,3 +11,6 @@
   - if event.turnout && event.turnout > 0
     .turnout
       = "参加者数 約#{event.turnout}人"
+  .people
+    - event.users.each do |user|
+      = link_to image_tag(user.profile_image_url, :size => "24x24"), user
