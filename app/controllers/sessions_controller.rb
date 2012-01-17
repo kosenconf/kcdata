@@ -6,6 +6,10 @@ class SessionsController < ApplicationController
 
     if user = User.find_by_provider_and_uid(provider, uid)
       self.current_user = user
+
+      user.profile_image_url = auth["user_info"]["image"]
+      user.save
+
       redirect_to :back
       return
     end
