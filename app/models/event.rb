@@ -6,7 +6,6 @@ class Event < ActiveRecord::Base
   validates :name,    :presence => true
   validates :place,   :presence => true
   validates :address, :presence => true
-  validates :turnout, :presence => true
 
   validate do
     return if self.url.blank?
