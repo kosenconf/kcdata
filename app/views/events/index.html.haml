@@ -1,7 +1,7 @@
 %h1 高専カンファレンス 開催リスト
 
 %div
-  = "全 #{@events.size} 開催、総参加者数 #{@events.map(&:turnout).sum} 人"
+  = "全 #{@events.size} 開催、総参加者数 #{@events.reject { |e| e.turnout.nil? }.map(&:turnout).sum} 人"
 
 %table
   %tr
@@ -15,7 +15,9 @@
     %tr
       %td= event.serial
       %td= link_to event.name, event
-      %td.turnout= event.turnout
+      %td.turnout
+        - if event.turnout && event.turnout > 0
+          = event.turnout
       %td= event.place
       %td= event.date.to_s(:basic)
 
