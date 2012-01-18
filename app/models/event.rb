@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  before_save :nil_to_zero
   has_many :relations
   has_many :users, :through => :relations
 
@@ -21,5 +22,11 @@ class Event < ActiveRecord::Base
 
   def to_param
     serial
+  end
+
+  private
+  
+  def nil_to_zero
+    self.turnout = 0 if self.turnout.blank?
   end
 end
