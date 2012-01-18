@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  before_save :nil_to_zero
+  before_save :blank_to_zero
   has_many :relations
   has_many :users, :through => :relations
 
@@ -24,9 +24,13 @@ class Event < ActiveRecord::Base
     serial
   end
 
+  def self.turnout_sum
+    Event.all.reject { |e| e.turnout.blank? }.map(&:turnout).sum
+  end
+
   private
-  
-  def nil_to_zero
+
+  def blank_to_zero
     self.turnout = 0 if self.turnout.blank?
   end
 end
