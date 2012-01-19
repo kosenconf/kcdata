@@ -24,10 +24,6 @@ class Event < ActiveRecord::Base
     serial
   end
 
-  def self.turnout_sum
-    Event.all.reject { |e| e.turnout.blank? }.map(&:turnout).sum
-  end
-
   private
 
   def blank_to_zero
