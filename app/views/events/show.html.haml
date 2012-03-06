@@ -35,6 +35,7 @@
     - attendees = relations.attendee
     - staffs    = relations.staff
     - speakers  = relations.speaker
+    - doragirls = relations.doragirl
     - watchers  = relations.watcher
 
     - unless staffs.empty?
@@ -43,6 +44,9 @@
     - unless speakers.empty?
       %h3 発表者
       = render :partial => "users/cube", :as => :user, :collection => speakers.map(&:user)
+    - unless doragirls.empty?
+      %h3 ドラ娘
+      = render :partial => "users/cube", :as => :user, :collection => doragirls.map(&:user)
     - unless attendees.empty?
       %h3 参加者
       = render :partial => "users/cube", :as => :user, :collection => attendees.map(&:user)
