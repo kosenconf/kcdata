@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :activated?, :signed_in?, :sign_out!
 
+  def require_sign_in
+    unless signed_in?
+      head :forbidden
+      return
+    end
+  end
+
   protected
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])

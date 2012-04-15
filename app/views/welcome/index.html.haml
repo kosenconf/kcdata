@@ -6,8 +6,9 @@
       .summary
         = "全 #{@events.size} 開催、総参加者数約 #{@events.sum(:turnout)} 人"
 
-      .link-box
-        = link_to "新たに開催情報を追加する", new_event_path
+      - if signed_in?
+        .link-box
+          = link_to "新たに開催情報を追加する", new_event_path
 
       = render :partial => "events/basic", :as => :event, :collection => @events
 

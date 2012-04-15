@@ -21,8 +21,9 @@
         .turnout
           = "参加者数 : 約#{@event.turnout}人"
 
-      .link-box
-        = link_to "この開催の情報を編集する", edit_event_path(@event)
+      - if signed_in?
+        .link-box
+          = link_to "この開催の情報を編集する", edit_event_path(@event)
 
     %h3 関連情報
     %ul

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class EventsController < ApplicationController
+  before_filter :require_sign_in, :only => [:new, :edit, :create, :update, :destroy]
+
   def index
     @events = Event.order("date")
     @events_for_graph = @events.map { |event|

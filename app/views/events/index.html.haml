@@ -23,8 +23,9 @@
 
 %br
 
-%div
-  = link_to 'Add New Event', new_event_path
+- if signed_in?
+  %div
+    = link_to 'Add New Event', new_event_path
 
 #chart
 
