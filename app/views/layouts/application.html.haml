@@ -25,6 +25,11 @@
 
     #main
       .container
+        .alert-message.info
+          KCdata は
+          = link_to "高専カンファレンスエフェクト", "http://kceffect.org/"
+          に移行しました！
+          今後は、高専カンファレンスエフェクトをご利用ください。
         - if notice
           #notice.alert-message.info= notice
         = yield
