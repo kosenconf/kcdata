@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030131527) do
+ActiveRecord::Schema.define(:version => 20120306141917) do
 
   create_table "events", :force => true do |t|
     t.string   "serial",                     :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20111030131527) do
     t.integer  "event_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "doragirl",   :default => false
   end
 
   add_index "relations", ["event_id"], :name => "index_relations_on_event_id"
